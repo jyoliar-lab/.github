@@ -17,7 +17,7 @@ agent가 내놓는 코드 · 테스트 · 문서를 사람이 전부 읽어야 �
 | [ticket-engineer](https://github.com/jyoliar-lab/ticket-engineer) | 집행 | 티켓 하나를 받아 코드 저장소에서 일하고 PR과 보고를 남기는 **ticket-engineer**의 하네스 |
 | [ops-workflow-steward](https://github.com/jyoliar-lab/ops-workflow-steward) | 거버넌스 | 프로세스의 규칙을 ADR로 쓰고 두 하네스에 반영하는 **steward**의 하네스. 자기 하네스는 고치지 못한다 |
 | [obs-toolkit](https://github.com/jyoliar-lab/obs-toolkit) | 산출물 | 이 흐름으로 만든 관측 분석 도구 |
-| 코드 저장소 | 티켓이 가리키는 곳 | 인프라 [jyoliar-k8s](https://github.com/jyoliar-careerhub/jyoliar-k8s) · [onpremise-k8s](https://github.com/jyoliar-careerhub/onpremise-k8s) · [jyoliar-platform-terraform](https://github.com/jyoliar-careerhub/jyoliar-platform-terraform)은 공개, careerhub 서비스는 비공개(요청 시 열람) |
+| 코드 저장소 | 티켓이 가리키는 곳 | 인프라 · 서비스 저장소는 [jyoliar-careerhub](https://github.com/jyoliar-careerhub) 조직에 있다 |
 
 ## 일의 흐름
 
