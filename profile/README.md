@@ -122,14 +122,20 @@ agent의 관찰은 티켓 코멘트에 쌓이고, 사람이 증류해 문서로 
 
 ## 실제 사례
 
-인프라 한 체인과 애플리케이션 한 체인이다. digest 한 줄은 다른 작업에서 가져왔다.
+인프라 · 애플리케이션 · 정책, 세 체인이다. 셋 다 2026년 10월의 것이다. \
+정책 체인은 티켓 대신 하네스 커밋으로 끝난다 — 일의 흐름 자체를 이 흐름으로 바꾼 사례다.
 
-**인프라 — 인증을 Zitadel로 위임**
+**인프라 — 레거시 커리어허브를 Cloudflare Tunnel로 임시 공개**
 
-[논의 — Epic의 일 쪼갬](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/discussion/260807_0158_zitadel-epic-work-breakdown.md) → [ADR-0030 — IdP로 Zitadel을 채택한다](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/adr/adr-0030-adopt-zitadel-as-idp.md) (accepted) → [Epic #43](https://github.com/jyoliar-lab/ops-workflow/issues/43) → [Feature #44](https://github.com/jyoliar-lab/ops-workflow/issues/44) → [Task #50 — masterkey 보존](https://github.com/jyoliar-lab/ops-workflow/issues/50) → [jyoliar-platform-terraform#2](https://github.com/jyoliar-careerhub/jyoliar-platform-terraform/pull/2) · [jyoliar-k8s#20](https://github.com/jyoliar-careerhub/jyoliar-k8s/pull/20)
+[논의 — 인증 기능의 처분](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/discussion/261026_1610_legacy-public-exposure-auth-disposition.md) · [조사 — Tunnel · external-dns · 엣지 보호](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/discussion/261026_1631_cloudflare-tunnel-dns-edge-survey.md) · [논의 — Cloudflare 쪽 배선](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/discussion/261026_1632_cloudflare-exposure-wiring-and-edge.md) · [논의 — 공개 Gateway 토폴로지](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/discussion/261026_1811_public-gateway-topology-and-tunnel-handoff.md) → [digest — 설계와 전환 순서](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/digest/261026_1715_legacy-public-exposure-blueprint.md) → [Feature #133](https://github.com/jyoliar-lab/ops-workflow/issues/133) → [Task #136 — 터널을 로컬 관리로](https://github.com/jyoliar-lab/ops-workflow/issues/136) → [jyoliar-platform-terraform#4](https://github.com/jyoliar-careerhub/jyoliar-platform-terraform/pull/4) · [jyoliar-k8s#46](https://github.com/jyoliar-careerhub/jyoliar-k8s/pull/46) → [완료 보고 — AC 대조표](https://github.com/jyoliar-lab/ops-workflow/issues/136#issuecomment-6463268300)
 
-**애플리케이션 — obs-toolkit의 R·E·D 환원 연산**
+논의가 제약으로 삼은 ADR은 [ADR-0034 — terraform은 GitOps가 생성한 인프라에 의존하지 않는다](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/homelab/adr/adr-0034-terraform-gitops-dependency-direction.md) (proposed)다. \
+Task #136은 그 경계(터널 ingress는 클러스터로, CNAME은 seed로)를 실제로 시험한 사례다.
 
-[논의 — 만들 것인가 빌릴 것인가](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ai-agent/discussion/260917_1726_obs-toolkit-build-vs-borrow.md) → [Feature #92](https://github.com/jyoliar-lab/ops-workflow/issues/92) → [Task #102](https://github.com/jyoliar-lab/ops-workflow/issues/102) → [시나리오 코멘트](https://github.com/jyoliar-lab/ops-workflow/issues/102#issuecomment-6232081604) → [verify 대조표](https://github.com/jyoliar-lab/ops-workflow/issues/102#issuecomment-6232420944) → [obs-toolkit#17](https://github.com/jyoliar-lab/obs-toolkit/pull/17)
+**애플리케이션 — obs-toolkit 어댑터 구조**
 
-**digest** — [레거시 서비스 공개 노출 청사진](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/digest/261026_1715_legacy-public-exposure-blueprint.md): 논의 [261026_1610](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/careerhub/discussion/261026_1610_legacy-public-exposure-auth-disposition.md)의 결론을 증류해 [ADR-0034](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/homelab/adr/adr-0034-terraform-gitops-dependency-direction.md)와 [Feature #133](https://github.com/jyoliar-lab/ops-workflow/issues/133)으로 나갔다.
+[논의 — 테스트 품질을 무엇이 낮추나](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ai-agent/discussion/261019_1623_obs-toolkit-test-quality.md) → [조사 — 어댑터 · core의 구조적 결함](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ai-agent/discussion/261022_1301_obs-toolkit-adapter-structure-survey.md) → [논의 — 인터페이스 개선의 범위](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ai-agent/discussion/261022_1334_obs-toolkit-adapter-interface-scope.md) → [Feature #126](https://github.com/jyoliar-lab/ops-workflow/issues/126) → [Task #129 — argv 매핑 · typed RunResult](https://github.com/jyoliar-lab/ops-workflow/issues/129) → [TDD 시나리오 표](https://github.com/jyoliar-lab/ops-workflow/issues/129#issuecomment-6336086629) → [검수 대조표](https://github.com/jyoliar-lab/ops-workflow/issues/129#issuecomment-6336738504) → [obs-toolkit#21](https://github.com/jyoliar-lab/obs-toolkit/pull/21) → [완료 보고 — 나머지 AC 그룹](https://github.com/jyoliar-lab/ops-workflow/issues/129#issuecomment-6337968373)
+
+**정책 — 논의 위에 digest 층을 둔다**
+
+[논의 — 읽을 수 없는 로그와 얼어붙는 영수증 사이](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ops-workflow/discussion/261006_1549_digest-layer-over-discussion.md) (§7 임계선에서 ADR감을 가른다) → [ADR-0035 — 수렴한 논의의 결론은 digest로 증류한다](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ops-workflow/adr/adr-0035-distill-conclusions-into-digest.md) (proposed) → [digest — discussion과 digest가 돌아가는 모양](https://github.com/jyoliar-lab/ops-workflow/blob/main/docs/ops-workflow/digest/261006_1640_digest-layer-decisions.md) (첫 digest, 논의 넷의 결론) → [하네스 커밋 — discussion 스킬 신설 · digest 거부 기준](https://github.com/jyoliar-lab/ops-workflow/commit/58e755744235eeb00586ff7b129ad4d33b4c6739)
